@@ -18,4 +18,10 @@ final class PriceCalculator
     {
         return $unitPriceCents * $quantity;
     }
+
+    /** Return subtotal plus one handling fee per order, including an empty order. */
+    public function totalIncludingHandlingCents(int $unitPriceCents, int $quantity, int $handlingFeeCents): int
+    {
+        return $this->subtotalCents($unitPriceCents, $quantity) + $handlingFeeCents;
+    }
 }
